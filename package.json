@@ -1,0 +1,37 @@
+{
+  "name": "an-questions",
+  "version": "1.0.0",
+  "description": "Recherche de questions dans les data Assemblee Nationale",
+  "main": "dist/index.mjs",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "create-out": "mkdirp resultat",
+    "process": "node dist/index.js",
+    "dl-ecrites": "nget -u https://data.assemblee-nationale.fr/static/openData/repository/16/questions/questions_ecrites/Questions_ecrites.json.zip -O ecrites.zip",
+    "dl-qag": "nget -u https://data.assemblee-nationale.fr/static/openData/repository/16/questions/questions_gouvernement/Questions_gouvernement.json.zip -O qag.zip",
+    "dl-deputes": "nget -u https://data.assemblee-nationale.fr/static/openData/repository/16/amo/deputes_senateurs_ministres_legislature/AMO20_dep_sen_min_tous_mandats_et_organes.json.zip -O acteurs.zip",
+    "clean": "rimraf qag.zip ecrites.zip acteurs.zip dist json",
+    "unzip-ecrites": "uncomp ecrites.zip",
+    "unzip-qag": "uncomp qag.zip",
+    "unzip-deputes": "uncomp acteurs.zip",
+    "quicktest": "run-s build create-out process",
+    "magic": "run-s clean dl-ecrites dl-qag dl-deputes unzip-ecrites unzip-qag unzip-deputes quicktest"
+  },
+  "author": "David Mobbs",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "@warren-bank/node-request-cli": "^4.0.18",
+    "mkdirp": "^1.0.4",
+    "node-uncompress": "^0.1.8",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "eta": "^1.12.3",
+    "html-docx-js-typescript": "^0.1.5",
+    "html-pdf-node-ts": "^1.0.7"
+  }
+}

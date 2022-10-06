@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Questions Assemblee Nationale</title>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Questions écrites</h1>
+    <% it.questionsEcrites.forEach(function(question) { %>
+    <table>
+      <tr>
+        <th><a href="<%= question.url %>"><%= question.id %></a></th>
+        <th>&nbsp;</th>
+        <th><%= question.date %></th>
+      </tr>
+      <tr>
+        <td><%= question.auteur %></td>
+        <td><%= question.dept %></td>
+        <td><%= question.parti %></td>
+      </tr>
+      <tr><td colspan="3"><b>Question</b></td></tr>
+      <tr><td colspan="3"><%= question.texteQuestion %></td></tr>
+      <tr><td colspan="3"><b>Réponse</b></td></tr>
+      <tr><td colspan="3"><%= question.texteReponse %></td></tr>
+    </table>
+    <br/>
+    <% }) %>
+    <h1>Questions au gouvernement</h1>
+    <% it.questionsGouvernement.forEach(function(question) { %>
+    <table>
+      <tr>
+        <th><a href="<%= question.url %>"><%= question.id %></a></th>
+        <th>&nbsp;</th>
+        <th><%= question.date %></th>
+      </tr>
+      <tr>
+        <td><%= question.auteur %></td>
+        <td><%= question.dept %></td>
+        <td><%= question.parti %></td>
+      </tr>
+      <tr><td colspan="3"><%= question.texte %></td></tr>
+    </table>
+    <br/>
+    <% }) %>
+  </body>
+</html>
