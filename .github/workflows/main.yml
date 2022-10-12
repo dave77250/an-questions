@@ -51,5 +51,7 @@ jobs:
           
       # Runs a single command using the runners shell
       - name: Run compilation process
-        run: npm run magic
+        run: 
+          npm install
+          npm run magic
           
